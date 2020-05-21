@@ -7,7 +7,14 @@ setup(
     packages=["app"],
     include_package_data=True,
     zip_safe=False,
-    install_requires=["flask", "sqlalchemy", "flask-sqlalchemy", "flask-migrate"],
+    install_requires=[
+        "flask",
+        "sqlalchemy",
+        "flask-sqlalchemy",
+        "flask-migrate",
+        "flask-login",
+        "marshmallow",
+    ],
     setup_requires=["pytest-runner"],
     tests_require=["pytest", "pytest-flask"],
 )
