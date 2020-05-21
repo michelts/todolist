@@ -5,8 +5,18 @@ from todolist import models
 
 
 @pytest.fixture
-def task(session, **extra_create_kwargs):
+def user(session):
+    user = models.User(username='user', name='John Smith')
+    user.password = '123456'
+    session.add(user)
+    session.commit()
+    return user
+
+
+@pytest.fixture
+def task(session, user, **extra_create_kwargs):
     create_kwargs = {
+        'user_id': user.id,
         'description': 'Some task',
         'due_date': datetime.date(2020, 5, 21),
     }

@@ -1,7 +1,6 @@
 import os
 import pytest
-from todolist import create_app
-from todolist.models import db as _db
+from todolist import create_app, db as _db
 
 TEST_DATABASE_PATH = "/tmp/test.db"
 TEST_DATABASE_URI = "sqlite:///%s" % TEST_DATABASE_PATH
@@ -9,7 +8,7 @@ TEST_DATABASE_URI = "sqlite:///%s" % TEST_DATABASE_PATH
 
 @pytest.fixture
 def app(request):
-    app = create_app(DATABASE_URI=TEST_DATABASE_URI, DEBUG=True,)
+    app = create_app(DATABASE_URI=TEST_DATABASE_URI, DEBUG=True)
 
     ctx = app.app_context()
     ctx.push()
