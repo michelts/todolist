@@ -25,6 +25,7 @@ def test_task_list_returns_task_objects(client, task):
             "id": task.id,
             "description": task.description,
             "priority": task.priority,
-            "due_date": task.due_date,
+            "due_date": task.due_date.isoformat(),
+            "completed": task.completed,
         }
     ]

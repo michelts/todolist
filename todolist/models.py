@@ -25,6 +25,6 @@ class Task(db.Model):
             "id": self.id,
             "description": self.description,
             "priority": self.priority,
-            "due_date": self.due_date,
+            "due_date": self.due_date.isoformat(),
             "completed": self.completed,
         }
