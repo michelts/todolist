@@ -2,7 +2,7 @@ import pytest
 import datetime
 import flask_login
 
-from todolist import models
+from app import models
 
 
 @pytest.fixture

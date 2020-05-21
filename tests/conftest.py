@@ -1,6 +1,6 @@
 import os
 import pytest
-from todolist import create_app, db as _db
+from app import create_app, db as _db
 
 TEST_DATABASE_PATH = "/tmp/test.db"
 TEST_DATABASE_URI = "sqlite:///%s" % TEST_DATABASE_PATH
