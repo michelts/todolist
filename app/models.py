@@ -43,7 +43,7 @@ class Task(db.Model):
     description = db.Column(db.String(255), nullable=False)
     priority = db.Column(db.Integer, default=0)
     due_date = db.Column(db.Date)
-    completed = db.Column(db.Boolean, default=False)
+    is_completed = db.Column(db.Boolean, default=False)
     is_removed = db.Column(db.Boolean, default=False)
 
     def __repr__(self):
@@ -55,5 +55,5 @@ class Task(db.Model):
             "description": self.description,
             "priority": self.priority,
             "due_date": self.due_date.isoformat() if self.due_date else None,
-            "completed": self.completed,
+            "is_completed": self.is_completed,
         }

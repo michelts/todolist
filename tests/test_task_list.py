@@ -12,6 +12,6 @@ def test_task_list_returns_task_objects_for_authenticated_user(user_client, user
             "description": task.description,
             "priority": task.priority,
             "due_date": task.due_date.isoformat(),
-            "completed": task.completed,
+            "is_completed": task.is_completed,
         }
     ]

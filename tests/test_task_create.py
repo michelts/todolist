@@ -25,14 +25,14 @@ def test_task_create_task_and_return_it_for_authenticated_user(
     assert obj.description == payload["description"]
     assert obj.priority == 0  # default value when suppressed
     assert obj.due_date is None
-    assert obj.completed is False  # default value when suppressed
+    assert obj.is_completed is False  # default value when suppressed
 
     assert response.json == {
         "id": obj.id,
         "description": obj.description,
         "priority": obj.priority,
         "due_date": None,
-        "completed": obj.completed,
+        "is_completed": obj.is_completed,
     }
 
 
