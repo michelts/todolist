@@ -1,13 +1,14 @@
 from flask import Flask
-from .models import db
+from flask_migrate import Migrate
 from .views import blueprint
 
 
 def create_app(DATABASE_URI='sqlite:////tmp/database.db', DEBUG=True):
     app = Flask(__name__)
-    app.config['DEBUG'] = DEBUG
-    app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URI
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    app.config["DEBUG"] = DEBUG
+    app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_URI
+    app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+    Migrate(app, db)
     db.init_app(app)
     app.register_blueprint(blueprint, url_prefix='/api/v1/')
     return app
