@@ -1,6 +1,6 @@
-from flask import request, jsonify
+from flask import jsonify, request
 from flask.blueprints import Blueprint
-from flask_login import login_required, current_user
+from flask_login import current_user, login_required
 
 from . import models, validators
 

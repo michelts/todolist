@@ -1,7 +1,8 @@
 from flask import Flask
 from flask_migrate import Migrate
-from .views import blueprint
+
 from .models import db, login_manager
+from .views import blueprint
 
 
 def create_app(DATABASE_URI="sqlite:////tmp/database.db", DEBUG=True):

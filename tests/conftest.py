@@ -1,6 +1,8 @@
-import os
-import pytest
 import datetime
+import os
+
+import pytest
+
 from app import create_app, db as _db, models
 
 TEST_DATABASE_PATH = "/tmp/test.db"

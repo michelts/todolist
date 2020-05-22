@@ -1,5 +1,6 @@
-import pytest
 from datetime import timedelta
+
+import pytest
 
 from app import models
 
