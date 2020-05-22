@@ -49,15 +49,7 @@ def test_task_update_fails_when_any_field_is_missing(
     del payload[field]
     response = user_client.put(f"/api/v1/tasks/{task.id}/", json=payload)
     assert response.status_code == 400
-
-
-@pytest.mark.parametrize("invalid_value", ["some-invalid-value", ""])
-def test_task_update_fails_when_due_date_is_invalid(
-    user_client, user, task, payload, invalid_value
-):
-    payload["due_date"] = invalid_value
-    response = user_client.put(f"/api/v1/tasks/{task.id}/", json=payload)
-    assert response.status_code == 400
+    assert response.json == {field: ["Missing data for required field."]}
 
 
 def test_task_update_saves_null_due_date(user_client, user, task, payload):
@@ -67,3 +59,47 @@ def test_task_update_saves_null_due_date(user_client, user, task, payload):
 
     obj = models.Task.query.one()
     assert obj.due_date is None
+
+
+@pytest.mark.parametrize("invalid_value", ["some-invalid-value", ""])
+def test_task_update_fails_when_due_date_is_invalid(
+    user_client, user, task, payload, invalid_value
+):
+    payload["due_date"] = invalid_value
+    response = user_client.put(f"/api/v1/tasks/{task.id}/", json=payload)
+    assert response.status_code == 400
+    assert response.json == {"due_date": ["Not a valid date."]}
+
+
+@pytest.mark.parametrize("invalid_value", ["some-invalid-value", ""])
+def test_task_creation_fails_when_priority_is_not_integer(
+    user_client, user, task, payload, invalid_value
+):
+    payload["priority"] = invalid_value
+    response = user_client.put(f"/api/v1/tasks/{task.id}/", json=payload)
+    assert response.status_code == 400
+    assert response.json == {"priority": ["Not a valid integer."]}
+
+
+def test_task_creation_fails_when_priority_is_null(user_client, user, task, payload):
+    payload["priority"] = None
+    response = user_client.put(f"/api/v1/tasks/{task.id}/", json=payload)
+    assert response.status_code == 400
+    assert response.json == {"priority": ["Field may not be null."]}
+
+
+@pytest.mark.parametrize("invalid_value", ["some-invalid-value", ""])
+def test_task_creation_fails_when_is_completed_flag_is_not_boolean(
+    user_client, user, task, payload, invalid_value
+):
+    payload["is_completed"] = invalid_value
+    response = user_client.put(f"/api/v1/tasks/{task.id}/", json=payload)
+    assert response.status_code == 400
+    assert response.json == {"is_completed": ["Not a valid boolean."]}
+
+
+def test_task_creation_fails_when_is_completed_flag_is_null(user_client, user, task, payload):
+    payload["is_completed"] = None
+    response = user_client.put(f"/api/v1/tasks/{task.id}/", json=payload)
+    assert response.status_code == 400
+    assert response.json == {"is_completed": ["Field may not be null."]}

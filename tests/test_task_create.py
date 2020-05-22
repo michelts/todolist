@@ -72,6 +72,7 @@ def test_task_creation_fails_when_description_is_missing(user_client, user, payl
     del payload["description"]
     response = user_client.post("/api/v1/tasks/", json=payload)
     assert response.status_code == 400
+    assert response.json == {"description": ["Missing data for required field."]}
 
 
 @pytest.mark.parametrize("invalid_value", ["some-invalid-value", ""])
@@ -81,3 +82,38 @@ def test_task_creation_fails_when_due_date_is_invalid(
     payload["due_date"] = invalid_value
     response = user_client.post("/api/v1/tasks/", json=payload)
     assert response.status_code == 400
+    assert response.json == {"due_date": ["Not a valid date."]}
+
+
+@pytest.mark.parametrize("invalid_value", ["some-invalid-value", ""])
+def test_task_creation_fails_when_priority_is_not_integer(
+    user_client, user, payload, invalid_value
+):
+    payload["priority"] = invalid_value
+    response = user_client.post("/api/v1/tasks/", json=payload)
+    assert response.status_code == 400
+    assert response.json == {"priority": ["Not a valid integer."]}
+
+
+def test_task_creation_fails_when_priority_is_null(user_client, user, payload):
+    payload["priority"] = None
+    response = user_client.post("/api/v1/tasks/", json=payload)
+    assert response.status_code == 400
+    assert response.json == {"priority": ["Field may not be null."]}
+
+
+@pytest.mark.parametrize("invalid_value", ["some-invalid-value", ""])
+def test_task_creation_fails_when_is_completed_flag_is_not_boolean(
+    user_client, user, payload, invalid_value
+):
+    payload["is_completed"] = invalid_value
+    response = user_client.post("/api/v1/tasks/", json=payload)
+    assert response.status_code == 400
+    assert response.json == {"is_completed": ["Not a valid boolean."]}
+
+
+def test_task_creation_fails_when_is_completed_flag_is_null(user_client, user, payload):
+    payload["is_completed"] = None
+    response = user_client.post("/api/v1/tasks/", json=payload)
+    assert response.status_code == 400
+    assert response.json == {"is_completed": ["Field may not be null."]}
