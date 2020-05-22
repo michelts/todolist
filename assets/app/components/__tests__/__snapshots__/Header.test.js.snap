@@ -17,15 +17,9 @@ exports[`Header component should render the brand and a logout link, if user is 
     className="justify-content-end"
   >
     <NavLink
-      as={
-        Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "displayName": "SafeAnchor",
-          "render": [Function],
-        }
-      }
+      as={[Function]}
       disabled={false}
-      href="#/logout"
+      to="/logout"
     >
       Logout
     </NavLink>
@@ -50,15 +44,9 @@ exports[`Header component should render the brand and register link, if user is 
     className="justify-content-end"
   >
     <NavLink
-      as={
-        Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "displayName": "SafeAnchor",
-          "render": [Function],
-        }
-      }
+      as={[Function]}
       disabled={false}
-      href="#/register"
+      to="/register"
     >
       Register
     </NavLink>
@@ -83,15 +71,9 @@ exports[`Header component should render the brand and register link, if user is 
     className="justify-content-end"
   >
     <NavLink
-      as={
-        Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "displayName": "SafeAnchor",
-          "render": [Function],
-        }
-      }
+      as={[Function]}
       disabled={false}
-      href="#/register"
+      to="/register"
     >
       Register
     </NavLink>

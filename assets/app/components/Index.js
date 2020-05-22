@@ -8,12 +8,11 @@ import Register from './Register';
 import Tasks from './Tasks';
 
 const Index = () => (
-  <>
+  <Router>
     <Header>
       Todo list application
     </Header>
     <Container>
-      <Router>
         <Switch>
           <Route path="/tasks">
             <Tasks />
@@ -28,9 +27,8 @@ const Index = () => (
             <Login />
           </Route>
         </Switch>
-      </Router>
     </Container>
-  </>
+  </Router>
 );
 
 export default Index;
