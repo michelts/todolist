@@ -1,5 +1,36 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Login component should indicate authenticated failed if form submission is not successful 1`] = `
+<Formik
+  initialValues={
+    Object {
+      "password": "",
+      "username": "",
+    }
+  }
+  onSubmit={[Function]}
+>
+  <p>
+    Login failed! Check your credentials!
+  </p>
+  <Field
+    label="Username"
+    name="username"
+    type="text"
+  />
+  <Field
+    label="Password"
+    name="password"
+    type="password"
+  />
+  <button
+    type="submit"
+  >
+    Submit
+  </button>
+</Formik>
+`;
+
 exports[`Login component should render a login form if user is not authenticated 1`] = `
 <Formik
   initialValues={

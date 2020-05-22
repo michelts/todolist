@@ -11,6 +11,7 @@ export const LoginSchema = Yup.object().shape({
 
 const Login = () => {
   const history = useHistory();
+  const [loginFailed, setLoginFailed] = React.useState(false);
 
   React.useEffect(() => {
     axios.get('/api/v1/users/current/')
@@ -22,16 +23,26 @@ const Login = () => {
     username: '',
     password: '',
   };
+
   const handleSubmit = (values) => {
-    alert(JSON.stringify(values, null, 2));
+    axios.post('/api/v1/users/login/', values)
+      .then((user) => history.push('/tasks'))
+      .catch(() => setLoginFailed(true));
   };
+
   return (
     <Formik
       initialValues={initialValues}
       onSubmit={handleSubmit}
     >
+      {loginFailed && (
+        <p>Login failed! Check your credentials!</p>
+      )}
+
       <Field type="text" name="username" label="Username" />
+
       <Field type="password" name="password" label="Password" />
+
       <button type="submit">Submit</button>
     </Formik>
   );

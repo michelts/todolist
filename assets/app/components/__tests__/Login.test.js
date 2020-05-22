@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
+import { Formik } from 'formik';
 import { UserFactory } from '../../factories';
 import Login from '../Login';
 
@@ -32,7 +33,7 @@ describe('Login component', () => {
     expect(React.useEffect).toHaveBeenCalledWith(expect.anything(), []);
   });
 
-  fit('should render a login form if user is not authenticated', async () => {
+  it('should render a login form if user is not authenticated', async () => {
     axios.get.mockRejectedValue({});
     const { wrapper, history } = getWrapper();
     expect(axios.get).toHaveBeenCalledWith('/api/v1/users/current/');
@@ -42,24 +43,36 @@ describe('Login component', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should authenticate the user and redirect him to the task list when form is submitted successfully', () => {
+  it('should authenticate the user and redirect him to the task list when form is submitted successfully', async () => {
     axios.get.mockRejectedValue({});
     axios.post.mockResolvedValue(UserFactory.build());
     const { wrapper, history } = getWrapper();
+
+    await axios.get;
     const payload = { username: 'foo', password: 'bar' };
-    wrapper.find('form').simulate('submit', payload);
+    wrapper.find(Formik).simulate('submit', payload);
+
+    await axios.post;
     expect(axios.post).toHaveBeenCalledWith('/api/v1/users/login/', payload);
     expect(history.push).toHaveBeenCalledWith('/tasks');
   });
 
-  it('should indicate authenticated failed if form submission is not successful', () => {
+  fit('should indicate authenticated failed if form submission is not successful', async (done) => {
     axios.get.mockRejectedValue({});
     axios.post.mockRejectedValue({});
     const { wrapper, history } = getWrapper();
+
+    await axios.get;
     const payload = { username: 'foo', password: 'bar' };
-    wrapper.find('form').simulate('submit', payload);
+    wrapper.find(Formik).simulate('submit', payload);
     expect(axios.post).toHaveBeenCalledWith('/api/v1/users/login/', payload);
+
+    await axios.post;
     expect(history.push).not.toHaveBeenCalled();
-    expect(wrapper).toMatchSnapshot();
+
+    process.nextTick(() => {
+      expect(wrapper).toMatchSnapshot();
+      done();
+    });
   });
 });
