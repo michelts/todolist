@@ -20,10 +20,10 @@ def task_list():
 @blueprint.route("/tasks/", methods=["POST"])
 @login_required
 def task_create():
-    schema = validators.TaskSchema()
+    schema = validators.TaskCreateSchema()
     errors = schema.validate(request.json)
     if errors:
-        return abort(400, json.dumps(errors))
+        return (jsonify(errors), 400)
 
     payload = schema.load(request.json)
     obj = models.Task(user_id=current_user.id, **payload)
@@ -31,6 +31,24 @@ def task_create():
     models.db.session.commit()
 
     return (jsonify(obj.serialize()), 201)
+
+
+@blueprint.route("/tasks/<int:task_id>/", methods=["PUT"])
+@login_required
+def task_update(task_id):
+    schema = validators.TaskUpdateSchema()
+    errors = schema.validate(request.json)
+    if errors:
+        return (jsonify(errors), 400)
+
+    payload = schema.load(request.json)
+    obj = models.Task.query.get(task_id)
+    for key, value in payload.items():
+        setattr(obj, key, value)
+    models.db.session.add(obj)
+    models.db.session.commit()
+
+    return (jsonify(obj.serialize()), 200)
 
 
 @blueprint.route("/tasks/<int:task_id>/", methods=["DELETE"])

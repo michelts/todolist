@@ -1,17 +1,15 @@
 from marshmallow import Schema, fields
 
 
-class TaskSchema(Schema):
-    """ /api/v1/tasks/ - POST
-
-    Parameters:
-     - description (str)
-     - priority (int)
-     - due_date (date)
-     - completed (bool)
-    """
-
+class TaskCreateSchema(Schema):
     description = fields.Str(required=True)
     priority = fields.Int(required=False)
     due_date = fields.Date(required=False, allow_none=True)
-    completed = fields.Boolean(required=False)
+    is_completed = fields.Boolean(required=False)
+
+
+class TaskUpdateSchema(TaskCreateSchema):
+    description = fields.Str(required=True)
+    priority = fields.Int(required=True)
+    due_date = fields.Date(required=True, allow_none=True)
+    is_completed = fields.Boolean(required=True)
