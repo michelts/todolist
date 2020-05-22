@@ -1,4 +1,4 @@
-import Factory from 'rosie';
+import { Factory } from 'rosie';
 
 const UserFactory = new Factory()
   .sequence('id', (index) => index + 1)

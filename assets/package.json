@@ -6,7 +6,8 @@
     "build": "NODE_ENV=production webpack --mode production --progress",
     "test": "jest --config .jest/config-test.json",
     "tests": "jest --config .jest/config-tests.json",
-    "linter": "eslint ."
+    "linter": "eslint .",
+    "apply-linter": "eslint . --fix"
   },
   "dependencies": {
     "formik": "^2.1.4",
