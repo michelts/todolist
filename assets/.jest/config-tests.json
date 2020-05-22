@@ -1,0 +1,14 @@
+{
+  "rootDir": "../",
+  "setupFilesAfterEnv": ["./.jest/setup"],
+  "verbose": true,
+  "snapshotSerializers": [
+    "enzyme-to-json/serializer"
+  ],
+  "collectCoverage": true,
+  "coverageDirectory": "./.jest/.coverage",
+  "modulePaths": ["./"],
+  "transform": {
+    "^.+\\.js$": "babel-jest"
+  }
+}

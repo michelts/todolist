@@ -1,0 +1,12 @@
+{
+  "rootDir": "../",
+  "setupFilesAfterEnv": ["./.jest/setup"],
+  "verbose": true,
+  "snapshotSerializers": [
+    "enzyme-to-json/serializer"
+  ],
+  "modulePaths": ["./"],
+  "transform": {
+    "^.+\\.js$": "babel-jest"
+  }
+}
