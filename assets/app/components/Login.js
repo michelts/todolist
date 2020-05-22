@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 import { Formik, Field } from 'formik';
 import * as Yup from 'yup';
 import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 import Loading from 'common/components/Loading';
 import Alert from 'common/components/Alert';
 import Input from 'common/components/Input';
@@ -67,7 +68,7 @@ const Login = () => {
 
             <Field component={PasswordInput} name="password" label="Password" />
 
-            <button type="submit">Submit</button>
+            <Button type="submit">Submit</Button>
           </Form>
         )}
       </Formik>

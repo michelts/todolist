@@ -43,11 +43,14 @@ exports[`Register component should indicate creation failed if form submission i
     label="Password"
     name="password"
   />
-  <button
+  <Button
+    active={false}
+    disabled={false}
     type="submit"
+    variant="primary"
   >
     Submit
-  </button>
+  </Button>
 </Form>
 `;
 
@@ -91,10 +94,13 @@ exports[`Register component should render a registration form: Formik children 1
     label="Password"
     name="password"
   />
-  <button
+  <Button
+    active={false}
+    disabled={false}
     type="submit"
+    variant="primary"
   >
     Submit
-  </button>
+  </Button>
 </Form>
 `;
