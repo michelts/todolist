@@ -11,7 +11,10 @@ blueprint = Blueprint("todos", __name__)
 @blueprint.route("/tasks/", methods=["GET"])
 @login_required
 def task_list():
-    return jsonify([obj.serialize() for obj in models.Task.query.all()])
+    query = models.Task.query.filter(
+        models.Task.user_id == current_user.id, models.Task.is_removed == False
+    )
+    return jsonify([obj.serialize() for obj in query])
 
 
 @blueprint.route("/tasks/", methods=["POST"])
