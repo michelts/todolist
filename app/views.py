@@ -1,5 +1,4 @@
-import json
-from flask import request, jsonify, abort
+from flask import request, jsonify
 from flask.blueprints import Blueprint
 from flask_login import login_required, current_user
 
@@ -12,7 +11,8 @@ blueprint = Blueprint("todos", __name__)
 @login_required
 def task_list():
     query = models.Task.query.filter(
-        models.Task.user_id == current_user.id, models.Task.is_removed == False
+        models.Task.user_id == current_user.id,
+        models.Task.is_removed == False,  # noqa: E712
     )
     return jsonify([obj.serialize() for obj in query])
 
