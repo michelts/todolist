@@ -2,9 +2,12 @@
 
 exports[`Login component should indicate authenticated failed if form submission is not successful: Error msg and Formik 1`] = `
 <Fragment>
-  <p>
+  <h1>
+    Access your account
+  </h1>
+  <Alert>
     Login failed! Check your credentials!
-  </p>
+  </Alert>
   <Formik
     initialValues={
       Object {
@@ -20,15 +23,18 @@ exports[`Login component should indicate authenticated failed if form submission
 `;
 
 exports[`Login component should indicate authenticated failed if form submission is not successful: Formik children 1`] = `
-<form
+<Form
+  inline={false}
   onSubmit={[MockFunction formikSubmit]}
 >
   <Field
+    component={[Function]}
     label="Username"
     name="username"
     type="text"
   />
   <Field
+    component={[Function]}
     label="Password"
     name="password"
     type="password"
@@ -38,11 +44,14 @@ exports[`Login component should indicate authenticated failed if form submission
   >
     Submit
   </button>
-</form>
+</Form>
 `;
 
 exports[`Login component should render a login form if user is not authenticated: Formik 1`] = `
 <Fragment>
+  <h1>
+    Access your account
+  </h1>
   <Formik
     initialValues={
       Object {
@@ -58,15 +67,18 @@ exports[`Login component should render a login form if user is not authenticated
 `;
 
 exports[`Login component should render a login form if user is not authenticated: Formik children 1`] = `
-<form
+<Form
+  inline={false}
   onSubmit={[MockFunction formikSubmit]}
 >
   <Field
+    component={[Function]}
     label="Username"
     name="username"
     type="text"
   />
   <Field
+    component={[Function]}
     label="Password"
     name="password"
     type="password"
@@ -76,5 +88,5 @@ exports[`Login component should render a login form if user is not authenticated
   >
     Submit
   </button>
-</form>
+</Form>
 `;
