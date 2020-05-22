@@ -2,12 +2,12 @@ from flask import jsonify, request
 from flask.blueprints import Blueprint
 from flask_login import current_user, login_required
 
-from . import models, validators
+from .. import models, validators
 
-blueprint = Blueprint("todos", __name__)
+blueprint = Blueprint("tasks", __name__)
 
 
-@blueprint.route("/tasks/", methods=["GET"])
+@blueprint.route("/", methods=["GET"])
 @login_required
 def task_list():
     query = models.Task.query.filter(
@@ -17,7 +17,7 @@ def task_list():
     return jsonify([obj.serialize() for obj in query])
 
 
-@blueprint.route("/tasks/", methods=["POST"])
+@blueprint.route("/", methods=["POST"])
 @login_required
 def task_create():
     schema = validators.TaskCreateSchema()
@@ -33,7 +33,7 @@ def task_create():
     return (jsonify(obj.serialize()), 201)
 
 
-@blueprint.route("/tasks/<int:task_id>/", methods=["PUT"])
+@blueprint.route("/<int:task_id>/", methods=["PUT"])
 @login_required
 def task_update(task_id):
     schema = validators.TaskUpdateSchema()
@@ -51,7 +51,7 @@ def task_update(task_id):
     return (jsonify(obj.serialize()), 200)
 
 
-@blueprint.route("/tasks/<int:task_id>/", methods=["DELETE"])
+@blueprint.route("/<int:task_id>/", methods=["DELETE"])
 @login_required
 def task_destroy(task_id):
     obj = models.Task.query.get(task_id)
