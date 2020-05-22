@@ -13,5 +13,5 @@ class TaskSchema(Schema):
 
     description = fields.Str(required=True)
     priority = fields.Int(required=False)
-    due_date = fields.Date(required=False)
+    due_date = fields.Date(required=False, allow_none=True)
     completed = fields.Boolean(required=False)

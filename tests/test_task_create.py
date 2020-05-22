@@ -14,7 +14,7 @@ def test_task_create_returns_403_for_unauthenticated_user(client, payload):
     assert response.status_code == 401
 
 
-def test_task_create_task_and_return_it_for_authenticated_user(
+def test_task_create_saves_and_returns_it_for_authenticated_user(
     user_client, user, payload
 ):
     response = user_client.post("/api/v1/tasks/", json=payload)
@@ -44,7 +44,16 @@ def test_task_creation_fails_when_description_is_missing(
     assert response.status_code == 400
 
 
-@pytest.mark.parametrize('invalid_value', ['some-invalid-value', '', None])
+def test_task_update_saves_null_due_date(user_client, user, payload):
+    payload["due_date"] = None
+    response = user_client.post("/api/v1/tasks/", json=payload)
+    assert response.status_code == 201
+
+    obj = models.Task.query.one()
+    assert obj.due_date is None
+
+
+@pytest.mark.parametrize('invalid_value', ['some-invalid-value', ''])
 def test_task_creation_fails_when_due_date_is_invalid(
     user_client, user, payload, invalid_value
 ):
