@@ -16,7 +16,7 @@ setup(
         "flask-login",
         "marshmallow",
     ],
-    setup_requires=["pytest-runner", "setuptools_black", "flake8", 'isort'],
+    setup_requires=["pytest-runner", "setuptools_black", "flake8", "isort"],
     tests_require=["pytest", "pytest-flask"],
     cmdclass={"build": setuptools_black.BuildCommand},
 )
