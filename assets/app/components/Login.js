@@ -11,7 +11,7 @@ import Input from 'common/components/Input';
 import PasswordInput from 'common/components/PasswordInput';
 
 export const LoginSchema = Yup.object().shape({
-  username: Yup.string().email().required(),
+  username: Yup.string().required(),
   password: Yup.string().required(),
 });
 
@@ -63,9 +63,9 @@ const Login = () => {
       >
         {({ handleSubmit: formikSubmit }) => (
           <Form onSubmit={formikSubmit}>
-            <Field component={Input} type="text" name="username" label="Username" />
+            <Field component={Input} name="username" label="Username" />
 
-            <Field component={PasswordInput} type="password" name="password" label="Password" />
+            <Field component={PasswordInput} name="password" label="Password" />
 
             <button type="submit">Submit</button>
           </Form>
