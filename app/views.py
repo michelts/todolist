@@ -27,4 +27,15 @@ def task_create():
     models.db.session.add(obj)
     models.db.session.commit()
 
-    return jsonify(obj.serialize()), 201
+    return (jsonify(obj.serialize()), 201)
+
+
+@blueprint.route("/tasks/<int:task_id>/", methods=["DELETE"])
+@login_required
+def task_destroy(task_id):
+    obj = models.Task.query.get(task_id)
+    obj.is_removed = True
+    models.db.session.add(obj)
+    models.db.session.commit()
+
+    return ("", 204)
