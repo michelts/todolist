@@ -1,23 +1,30 @@
 import React from 'react';
 import { HashRouter as Router, Switch, Route } from 'react-router-dom';
+import Container from 'common/components/Container';
+import Header from 'common/components/Header';
 import Login from './Login';
 import Logout from './Logout';
 import Tasks from './Tasks';
 
 const Index = () => (
-  <Router>
-    <Switch>
-      <Route path="/tasks">
-        <Tasks />
-      </Route>
-      <Route path="/logout">
-        <Logout />
-      </Route>
-      <Route>
-        <Login />
-      </Route>
-    </Switch>
-  </Router>
+  <>
+    <Header>Todo list application</Header>
+    <Container>
+      <Router>
+        <Switch>
+          <Route path="/tasks">
+            <Tasks />
+          </Route>
+          <Route path="/logout">
+            <Logout />
+          </Route>
+          <Route>
+            <Login />
+          </Route>
+        </Switch>
+      </Router>
+    </Container>
+  </>
 );
 
 export default Index;

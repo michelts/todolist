@@ -1,21 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Index component should render routes to Login, Logout and Tasks 1`] = `
-<HashRouter>
-  <Switch>
-    <Route
-      path="/tasks"
-    >
-      <Tasks />
-    </Route>
-    <Route
-      path="/logout"
-    >
-      <Logout />
-    </Route>
-    <Route>
-      <Login />
-    </Route>
-  </Switch>
-</HashRouter>
+<Fragment>
+  <Header>
+    Todo list application
+  </Header>
+  <Container>
+    <HashRouter>
+      <Switch>
+        <Route
+          path="/tasks"
+        >
+          <Tasks />
+        </Route>
+        <Route
+          path="/logout"
+        >
+          <Logout />
+        </Route>
+        <Route>
+          <Login />
+        </Route>
+      </Switch>
+    </HashRouter>
+  </Container>
+</Fragment>
 `;
