@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Logout component should render a loading component while processing logout 1`] = `<Loading />`;
