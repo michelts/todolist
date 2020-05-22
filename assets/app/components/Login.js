@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import { Formik, Field } from 'formik';
 import * as Yup from 'yup';
+import Alert from 'common/components/Alert';
 
 export const LoginSchema = Yup.object().shape({
   username: Yup.string().email().required(),
@@ -33,7 +34,7 @@ const Login = () => {
   return (
     <>
       {loginFailed && (
-        <p>Login failed! Check your credentials!</p>
+        <Alert>Login failed! Check your credentials!</Alert>
       )}
 
       <Formik
