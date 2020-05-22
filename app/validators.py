@@ -8,6 +8,12 @@ class UserLoginSchema(Schema):
     password = fields.Str(required=True)
 
 
+class UserCreateSchema(Schema):
+    username = fields.Str(required=True)
+    name = fields.Str(required=True)
+    password = fields.Str(required=True)
+
+
 class TaskCreateSchema(Schema):
     description = fields.Str(required=True)
     priority = fields.Int(required=False)

@@ -44,3 +44,20 @@ def user_login():
 def user_logout():
     logout_user()
     return '', 204
+
+
+@blueprint.route("/", methods=["POST"])
+def user_create():
+    schema = validators.UserCreateSchema()
+    errors = schema.validate(request.json)
+    if errors:
+        return jsonify(errors), 400
+
+    payload = schema.load(request.json)
+    user = models.User(**payload)
+    models.db.session.add(user)
+    models.db.session.commit()
+
+    login_user(user)
+
+    return jsonify(user.serialize()), 201
