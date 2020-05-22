@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header component should render the brand and a logout link, if user is authenticated 1`] = `
+<Navbar
+  bg="dark"
+  className="justify-content-between"
+  collapseOnSelect={false}
+  expand={true}
+  variant="dark"
+>
+  <NavbarBrand
+    href="#/"
+  >
+    Brand name
+  </NavbarBrand>
+  <NavbarCollapse
+    className="justify-content-end"
+  >
+    <NavLink
+      as={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "displayName": "SafeAnchor",
+          "render": [Function],
+        }
+      }
+      disabled={false}
+      href="#/logout"
+    >
+      Logout
+    </NavLink>
+  </NavbarCollapse>
+</Navbar>
+`;
+
+exports[`Header component should render the brand with given children, if user is not authenticated 1`] = `
+<Navbar
+  bg="dark"
+  className="justify-content-between"
+  collapseOnSelect={false}
+  expand={true}
+  variant="dark"
+>
+  <NavbarBrand
+    href="#/"
+  >
+    Brand name
+  </NavbarBrand>
+</Navbar>
+`;
+
+exports[`Header component should render the brand with given children, if user is undefined 1`] = `
+<Navbar
+  bg="dark"
+  className="justify-content-between"
+  collapseOnSelect={false}
+  expand={true}
+  variant="dark"
+>
+  <NavbarBrand
+    href="#/"
+  >
+    Brand name
+  </NavbarBrand>
+</Navbar>
+`;
