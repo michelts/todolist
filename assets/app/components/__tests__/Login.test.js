@@ -57,7 +57,7 @@ describe('Login component', () => {
     expect(history.push).toHaveBeenCalledWith('/tasks');
   });
 
-  fit('should indicate authenticated failed if form submission is not successful', async (done) => {
+  it('should indicate authenticated failed if form submission is not successful', async (done) => {
     axios.get.mockRejectedValue({});
     axios.post.mockRejectedValue({});
     const { wrapper, history } = getWrapper();
