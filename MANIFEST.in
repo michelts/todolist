@@ -1,0 +1,2 @@
+include todoapp/static/*
+include todoapp/templates/*
