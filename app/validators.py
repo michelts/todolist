@@ -1,4 +1,11 @@
-from marshmallow import Schema, fields
+from marshmallow import Schema, fields, validates_schema, ValidationError, pre_load
+
+from . import models
+
+
+class UserLoginSchema(Schema):
+    username = fields.Str(required=True)
+    password = fields.Str(required=True)
 
 
 class TaskCreateSchema(Schema):

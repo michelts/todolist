@@ -59,9 +59,14 @@ def session(request, db):
 
 
 @pytest.fixture
-def user(session):
+def generic_password():
+    return '123456'
+
+
+@pytest.fixture
+def user(session, generic_password):
     user = models.User(username="user", name="John Smith")
-    user.password = "123456"
+    user.password = generic_password
     session.add(user)
     session.commit()
     return user
