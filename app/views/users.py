@@ -1,6 +1,6 @@
 from flask import jsonify, request
 from flask.blueprints import Blueprint
-from flask_login import current_user
+from flask_login import current_user, login_user
 from sqlalchemy.orm.exc import NoResultFound
 from werkzeug.exceptions import NotFound
 from .. import models, validators
@@ -34,5 +34,7 @@ def user_login():
 
     if not user.verify_password(payload["password"]):
         return authentication_failed_response, 401
+
+    login_user(user)
 
     return jsonify(user.serialize())
