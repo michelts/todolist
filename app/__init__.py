@@ -2,7 +2,7 @@ from flask import Flask
 from flask_migrate import Migrate
 
 from .models import db, login_manager
-from .views import tasks_blueprint, users_blueprint
+from .views import home_blueprint, tasks_blueprint, users_blueprint
 
 
 def create_app(DATABASE_URI="sqlite:////tmp/database.db", DEBUG=True):
@@ -17,6 +17,7 @@ def create_app(DATABASE_URI="sqlite:////tmp/database.db", DEBUG=True):
 
     login_manager.init_app(app)
 
+    app.register_blueprint(home_blueprint, url_prefix="/")
     app.register_blueprint(tasks_blueprint, url_prefix="/api/v1/tasks/")
     app.register_blueprint(users_blueprint, url_prefix="/api/v1/users/")
     return app
