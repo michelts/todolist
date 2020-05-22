@@ -1,9 +1,8 @@
-const webpack = require('webpack');
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
-const inProduction = 'production' === process.env.NODE_ENV;
-const buildPath = path.resolve(__dirname, './bundles/');
+const inProduction = process.env.NODE_ENV === 'production';
+const buildPath = path.resolve(__dirname, '../app/static/');
 
 module.exports = {
   entry: {
@@ -38,4 +37,4 @@ module.exports = {
       'node_modules',
     ],
   },
-}
+};
