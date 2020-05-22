@@ -33,7 +33,7 @@ exports[`Header component should render the brand and a logout link, if user is 
 </Navbar>
 `;
 
-exports[`Header component should render the brand with given children, if user is not authenticated 1`] = `
+exports[`Header component should render the brand and register link, if user is not authenticated 1`] = `
 <Navbar
   bg="dark"
   className="justify-content-between"
@@ -46,10 +46,27 @@ exports[`Header component should render the brand with given children, if user i
   >
     Brand name
   </NavbarBrand>
+  <NavbarCollapse
+    className="justify-content-end"
+  >
+    <NavLink
+      as={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "displayName": "SafeAnchor",
+          "render": [Function],
+        }
+      }
+      disabled={false}
+      href="#/register"
+    >
+      Register
+    </NavLink>
+  </NavbarCollapse>
 </Navbar>
 `;
 
-exports[`Header component should render the brand with given children, if user is undefined 1`] = `
+exports[`Header component should render the brand and register link, if user is undefined 1`] = `
 <Navbar
   bg="dark"
   className="justify-content-between"
@@ -62,5 +79,22 @@ exports[`Header component should render the brand with given children, if user i
   >
     Brand name
   </NavbarBrand>
+  <NavbarCollapse
+    className="justify-content-end"
+  >
+    <NavLink
+      as={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "displayName": "SafeAnchor",
+          "render": [Function],
+        }
+      }
+      disabled={false}
+      href="#/register"
+    >
+      Register
+    </NavLink>
+  </NavbarCollapse>
 </Navbar>
 `;

@@ -9,13 +9,13 @@ const getWrapper = () => (
 );
 
 describe('Header component', () => {
-  it('should render the brand with given children, if user is undefined', () => {
+  it('should render the brand and register link, if user is undefined', () => {
     useGlobal.mockReturnValue([undefined]);
     const wrapper = getWrapper();
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should render the brand with given children, if user is not authenticated', () => {
+  it('should render the brand and register link, if user is not authenticated', () => {
     useGlobal.mockReturnValue([null]);
     const wrapper = getWrapper();
     expect(wrapper).toMatchSnapshot();

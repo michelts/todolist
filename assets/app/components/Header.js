@@ -14,13 +14,15 @@ const Header = ({ children }) => {
       <Navbar.Brand href="#/">
         {children}
       </Navbar.Brand>
-      {user && (
-        <Navbar.Collapse
-          className="justify-content-end"
-        >
-          <Nav.Link href="#/logout">Logout</Nav.Link>
-        </Navbar.Collapse>
-      )}
+      <Navbar.Collapse
+        className="justify-content-end"
+      >
+        {
+          user
+            ? <Nav.Link href="#/logout">Logout</Nav.Link>
+            : <Nav.Link href="#/register">Register</Nav.Link>
+        }
+      </Navbar.Collapse>
     </Navbar>
   );
 };
