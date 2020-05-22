@@ -1,45 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Login component should indicate authenticated failed if form submission is not successful 1`] = `
-<Formik
-  initialValues={
-    Object {
-      "password": "",
-      "username": "",
-    }
-  }
-  onSubmit={[Function]}
->
+exports[`Login component should indicate authenticated failed if form submission is not successful: Error msg and Formik 1`] = `
+<Fragment>
   <p>
     Login failed! Check your credentials!
   </p>
-  <Field
-    label="Username"
-    name="username"
-    type="text"
-  />
-  <Field
-    label="Password"
-    name="password"
-    type="password"
-  />
-  <button
-    type="submit"
+  <Formik
+    initialValues={
+      Object {
+        "password": "",
+        "username": "",
+      }
+    }
+    onSubmit={[Function]}
   >
-    Submit
-  </button>
-</Formik>
+    <Component />
+  </Formik>
+</Fragment>
 `;
 
-exports[`Login component should render a login form if user is not authenticated 1`] = `
-<Formik
-  initialValues={
-    Object {
-      "password": "",
-      "username": "",
-    }
-  }
-  onSubmit={[Function]}
+exports[`Login component should indicate authenticated failed if form submission is not successful: Formik children 1`] = `
+<form
+  onSubmit={[MockFunction formikSubmit]}
 >
   <Field
     label="Username"
@@ -56,5 +38,43 @@ exports[`Login component should render a login form if user is not authenticated
   >
     Submit
   </button>
-</Formik>
+</form>
+`;
+
+exports[`Login component should render a login form if user is not authenticated: Formik 1`] = `
+<Fragment>
+  <Formik
+    initialValues={
+      Object {
+        "password": "",
+        "username": "",
+      }
+    }
+    onSubmit={[Function]}
+  >
+    <Component />
+  </Formik>
+</Fragment>
+`;
+
+exports[`Login component should render a login form if user is not authenticated: Formik children 1`] = `
+<form
+  onSubmit={[MockFunction formikSubmit]}
+>
+  <Field
+    label="Username"
+    name="username"
+    type="text"
+  />
+  <Field
+    label="Password"
+    name="password"
+    type="password"
+  />
+  <button
+    type="submit"
+  >
+    Submit
+  </button>
+</form>
 `;

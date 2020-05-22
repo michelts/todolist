@@ -31,20 +31,26 @@ const Login = () => {
   };
 
   return (
-    <Formik
-      initialValues={initialValues}
-      onSubmit={handleSubmit}
-    >
+    <>
       {loginFailed && (
         <p>Login failed! Check your credentials!</p>
       )}
 
-      <Field type="text" name="username" label="Username" />
+      <Formik
+        initialValues={initialValues}
+        onSubmit={handleSubmit}
+      >
+        {({ handleSubmit: formikSubmit }) => (
+          <form onSubmit={formikSubmit}>
+            <Field type="text" name="username" label="Username" />
 
-      <Field type="password" name="password" label="Password" />
+            <Field type="password" name="password" label="Password" />
 
-      <button type="submit">Submit</button>
-    </Formik>
+            <button type="submit">Submit</button>
+          </form>
+        )}
+      </Formik>
+    </>
   );
 };
 

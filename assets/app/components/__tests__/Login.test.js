@@ -15,6 +15,11 @@ const getWrapper = () => {
   return { wrapper, history };
 };
 
+const formikChild = (wrapper) => {
+  const handleSubmit = jest.fn().mockName('formikSubmit');
+  return wrapper.find(Formik).renderProp('children')({ handleSubmit });
+};
+
 describe('Login component', () => {
   beforeEach(() => {
     jest.spyOn(React, 'useEffect').mockImplementation((effect) => effect());
@@ -40,7 +45,8 @@ describe('Login component', () => {
 
     await axios.get;
     expect(history.push).not.toHaveBeenCalled();
-    expect(wrapper).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot('Formik');
+    expect(formikChild(wrapper)).toMatchSnapshot('Formik children');
   });
 
   it('should authenticate the user and redirect him to the task list when form is submitted successfully', async () => {
@@ -71,7 +77,8 @@ describe('Login component', () => {
     expect(history.push).not.toHaveBeenCalled();
 
     process.nextTick(() => {
-      expect(wrapper).toMatchSnapshot();
+      expect(wrapper).toMatchSnapshot('Error msg and Formik');
+      expect(formikChild(wrapper)).toMatchSnapshot('Formik children');
       done();
     });
   });
