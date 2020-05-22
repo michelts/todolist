@@ -19,6 +19,6 @@ const Index = () => (
       </Route>
     </Switch>
   </Router>
-)
+);
 
 export default Index;
