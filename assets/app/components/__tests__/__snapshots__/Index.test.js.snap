@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Index component should render routes to Login, Logout and Tasks 1`] = `
+exports[`Index component should render routes to Login, Logout, Register and Tasks 1`] = `
 <Fragment>
   <Header>
     Todo list application
@@ -12,6 +12,11 @@ exports[`Index component should render routes to Login, Logout and Tasks 1`] = `
           path="/tasks"
         >
           <Tasks />
+        </Route>
+        <Route
+          path="/register"
+        >
+          <Register />
         </Route>
         <Route
           path="/logout"

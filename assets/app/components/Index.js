@@ -4,6 +4,7 @@ import Container from 'common/components/Container';
 import Header from './Header';
 import Login from './Login';
 import Logout from './Logout';
+import Register from './Register';
 import Tasks from './Tasks';
 
 const Index = () => (
@@ -16,6 +17,9 @@ const Index = () => (
         <Switch>
           <Route path="/tasks">
             <Tasks />
+          </Route>
+          <Route path="/register">
+            <Register />
           </Route>
           <Route path="/logout">
             <Logout />
