@@ -13,13 +13,8 @@ exports[`Index component should render routes to Login, Logout and Tasks 1`] = `
     >
       <Logout />
     </Route>
-    <Route
-      path="/login"
-    >
-      <Login />
-    </Route>
     <Route>
-      <Home />
+      <Login />
     </Route>
   </Switch>
 </HashRouter>

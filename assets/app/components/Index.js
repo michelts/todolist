@@ -14,11 +14,8 @@ const Index = () => (
       <Route path="/logout">
         <Logout />
       </Route>
-      <Route path="/login">
-        <Login />
-      </Route>
       <Route>
-        <Home />
+        <Login />
       </Route>
     </Switch>
   </Router>
