@@ -1,4 +1,5 @@
 from setuptools import setup
+import setuptools_black
 
 setup(
     name="Todo List",
@@ -17,4 +18,5 @@ setup(
     ],
     setup_requires=["pytest-runner"],
     tests_require=["pytest", "pytest-flask"],
+    cmdclass={"build": setuptools_black.BuildCommand},
 )

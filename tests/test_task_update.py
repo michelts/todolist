@@ -42,7 +42,9 @@ def test_task_update_saves_and_returns_it_for_authenticated_user(
     }
 
 
-@pytest.mark.parametrize('field', ['description', 'priority', 'due_date', 'is_completed'])
+@pytest.mark.parametrize(
+    "field", ["description", "priority", "due_date", "is_completed"]
+)
 def test_task_update_fails_when_any_field_is_missing(
     user_client, user, task, payload, field
 ):
@@ -98,7 +100,9 @@ def test_task_creation_fails_when_is_completed_flag_is_not_boolean(
     assert response.json == {"is_completed": ["Not a valid boolean."]}
 
 
-def test_task_creation_fails_when_is_completed_flag_is_null(user_client, user, task, payload):
+def test_task_creation_fails_when_is_completed_flag_is_null(
+    user_client, user, task, payload
+):
     payload["is_completed"] = None
     response = user_client.put(f"/api/v1/tasks/{task.id}/", json=payload)
     assert response.status_code == 400
