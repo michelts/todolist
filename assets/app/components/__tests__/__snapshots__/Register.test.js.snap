@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Register component should indicate creation failed if form submission is not successful: Error msg and Formik 1`] = `
+<Fragment>
+  <h1>
+    Create an account
+  </h1>
+  <Alert>
+    Registration failed! Check the filled data.
+  </Alert>
+  <Formik
+    initialValues={
+      Object {
+        "name": "",
+        "password": "",
+        "username": "",
+      }
+    }
+    onSubmit={[Function]}
+  >
+    <Component />
+  </Formik>
+</Fragment>
+`;
+
+exports[`Register component should indicate creation failed if form submission is not successful: Formik children 1`] = `
+<Form
+  inline={false}
+  onSubmit={[MockFunction formikSubmit]}
+>
+  <Field
+    component={[Function]}
+    label="Username"
+    name="username"
+  />
+  <Field
+    component={[Function]}
+    label="Username"
+    name="name"
+  />
+  <Field
+    component={[Function]}
+    label="Password"
+    name="password"
+  />
+  <button
+    type="submit"
+  >
+    Submit
+  </button>
+</Form>
+`;
+
+exports[`Register component should render a registration form: Formik 1`] = `
+<Fragment>
+  <h1>
+    Create an account
+  </h1>
+  <Formik
+    initialValues={
+      Object {
+        "name": "",
+        "password": "",
+        "username": "",
+      }
+    }
+    onSubmit={[Function]}
+  >
+    <Component />
+  </Formik>
+</Fragment>
+`;
+
+exports[`Register component should render a registration form: Formik children 1`] = `
+<Form
+  inline={false}
+  onSubmit={[MockFunction formikSubmit]}
+>
+  <Field
+    component={[Function]}
+    label="Username"
+    name="username"
+  />
+  <Field
+    component={[Function]}
+    label="Username"
+    name="name"
+  />
+  <Field
+    component={[Function]}
+    label="Password"
+    name="password"
+  />
+  <button
+    type="submit"
+  >
+    Submit
+  </button>
+</Form>
+`;
