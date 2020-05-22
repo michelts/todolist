@@ -3,7 +3,10 @@ import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import { Formik, Field } from 'formik';
 import * as Yup from 'yup';
+import Form from 'react-bootstrap/Form';
 import Alert from 'common/components/Alert';
+import Input from 'common/components/Input';
+import PasswordInput from 'common/components/PasswordInput';
 
 export const LoginSchema = Yup.object().shape({
   username: Yup.string().email().required(),
@@ -42,13 +45,13 @@ const Login = () => {
         onSubmit={handleSubmit}
       >
         {({ handleSubmit: formikSubmit }) => (
-          <form onSubmit={formikSubmit}>
-            <Field type="text" name="username" label="Username" />
+          <Form onSubmit={formikSubmit}>
+            <Field component={Input} type="text" name="username" label="Username" />
 
-            <Field type="password" name="password" label="Password" />
+            <Field component={PasswordInput} type="password" name="password" label="Password" />
 
             <button type="submit">Submit</button>
-          </form>
+          </Form>
         )}
       </Formik>
     </>
