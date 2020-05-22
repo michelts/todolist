@@ -25,6 +25,7 @@
     ],
     "rules": {
         "react/jsx-filename-extension": 0,
-        "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/factories/**", "**/__tests__/**", "**/__mocks__/**", "webpack.config.js"]}]
+        "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/factories/**", "**/__tests__/**", "**/__mocks__/**", "webpack.config.js"]}],
+        "react/prop-types": 0
     }
 }
