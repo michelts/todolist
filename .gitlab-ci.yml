@@ -30,6 +30,10 @@ backend_tests:
   before_script:
     - pip3 install --upgrade pip
     - pip3 install -r requirements.txt
+    - pip3 install -r test_requirements.txt
 
   script:
-    - pytest -v
+    - python setup.py flake8
+    - python setup.py isort
+    - python setup.py format
+    - python setup.py test

@@ -1,0 +1,6 @@
+pytest
+pytest-flask
+pytest-runner
+setuptools_black
+flake8
+isort
