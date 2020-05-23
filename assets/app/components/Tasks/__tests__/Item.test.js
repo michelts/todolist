@@ -88,7 +88,7 @@ describe('Tasks component', () => {
   });
 
   it('should toggle the item selection when click the checkbox', () => {
-    const tasks = OrderedMap(BlankTaskFactory.buildList(1).map(obj => [obj.id, obj]));
+    const tasks = OrderedMap(BlankTaskFactory.buildList(1).map((obj) => [obj.id, obj]));
     const { wrapper, props: { setTasks } } = getWrapper({ task: tasks.first() });
 
     wrapper.find('[name="select"]').simulate('click');

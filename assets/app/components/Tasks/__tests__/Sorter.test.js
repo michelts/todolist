@@ -48,7 +48,7 @@ describe('Tasks component', () => {
     expect(axios.get).toHaveBeenCalledWith('/api/v1/tasks/?sort=due_date');
 
     await axios.get;
-    expect(setTasks).toHaveBeenCalledWith(OrderedMap(tasks.map(obj => [obj.id, obj])));
+    expect(setTasks).toHaveBeenCalledWith(OrderedMap(tasks.map((obj) => [obj.id, obj])));
   });
 
   it('should reset a previous sort and get sorted tasks after a timeout', async () => {
@@ -72,6 +72,6 @@ describe('Tasks component', () => {
     expect(axios.get).toHaveBeenCalledWith('/api/v1/tasks/?sort=priority');
 
     await axios.get;
-    expect(setTasks).toHaveBeenCalledWith(OrderedMap(tasks.map(obj => [obj.id, obj])));
+    expect(setTasks).toHaveBeenCalledWith(OrderedMap(tasks.map((obj) => [obj.id, obj])));
   });
 });

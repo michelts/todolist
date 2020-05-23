@@ -13,6 +13,6 @@ const Logout = () => {
   return (
     <Loading />
   );
-}
+};
 
 export default Logout;

@@ -11,7 +11,7 @@ const getWrapper = () => {
 
 describe('Tasks component', () => {
   beforeEach(() => {
-    jest.spyOn(React, 'useEffect').mockImplementation(effect => effect());
+    jest.spyOn(React, 'useEffect').mockImplementation((effect) => effect());
   });
 
   it('should render a title, disabled create and sort controls, and the list as loading while list is undefined', () => {

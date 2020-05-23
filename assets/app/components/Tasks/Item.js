@@ -13,29 +13,29 @@ const TaskItem = ({
   const handleSaveDescription = (value) => {
     const payload = { ...task, description: value };
     axios.put(`/api/v1/tasks/${id}/`, payload).then(({ data }) => {
-      setTasks(state => state.set(id, data))
+      setTasks((state) => state.set(id, data));
     });
   };
 
   const handleSaveDueDate = (value) => {
     const payload = { ...task, due_date: value };
     axios.put(`/api/v1/tasks/${id}/`, payload).then(({ data }) => {
-      setTasks(state => state.set(id, data))
+      setTasks((state) => state.set(id, data));
     });
   };
 
-  const priorities = [0, 1, 2, 3, 4]
+  const priorities = [0, 1, 2, 3, 4];
 
   const handlePriorityChange = () => {
     const { current: { value } } = priorityRef;
     const payload = { ...task, priority: parseInt(value, 10) };
     axios.put(`/api/v1/tasks/${id}/`, payload).then(({ data }) => {
-      setTasks(state => state.set(id, data))
+      setTasks((state) => state.set(id, data));
     });
-  }
+  };
 
   const handleSelectClick = () => {
-    setTasks(state => state.update(id, obj =>({ ...obj, selected: !obj.selected })));
+    setTasks((state) => state.update(id, (obj) => ({ ...obj, selected: !obj.selected })));
   };
 
   return (
@@ -72,7 +72,7 @@ const TaskItem = ({
             ref={priorityRef}
             onChange={handlePriorityChange}
           >
-            {priorities.map(index => (
+            {priorities.map((index) => (
               <option
                 key={index}
                 value={index}

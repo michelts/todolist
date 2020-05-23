@@ -13,20 +13,20 @@ const Index = () => (
       Todo list application
     </Header>
     <Container>
-        <Switch>
-          <Route path="/tasks">
-            <Tasks />
-          </Route>
-          <Route path="/register">
-            <Register />
-          </Route>
-          <Route path="/logout">
-            <Logout />
-          </Route>
-          <Route>
-            <Login />
-          </Route>
-        </Switch>
+      <Switch>
+        <Route path="/tasks">
+          <Tasks />
+        </Route>
+        <Route path="/register">
+          <Register />
+        </Route>
+        <Route path="/logout">
+          <Logout />
+        </Route>
+        <Route>
+          <Login />
+        </Route>
+      </Switch>
     </Container>
   </Router>
 );
