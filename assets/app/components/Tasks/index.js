@@ -40,8 +40,12 @@ const Tasks = () => {
           <BlankItem />
         )}
 
-        {tasks !== undefined && tasks.size > 0 && tasks.valueSeq().map((item) => (
-          <Item key={item.id} item={item} />
+        {tasks !== undefined && tasks.size > 0 && tasks.valueSeq().map((task) => (
+          <Item
+            key={task.id}
+            task={task}
+            setTasks={setTasks}
+          />
         ))}
       </ListGroup>
 

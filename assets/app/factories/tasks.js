@@ -7,6 +7,14 @@ const TaskFactory = new Factory()
   .attr('due_date', '2020-05-22')
   .attr('is_completed', false);
 
+const BlankTaskFactory = new Factory()
+  .extend(TaskFactory)
+  .attr('description', '')
+  .attr('priority', 0)
+  .attr('due_date', null)
+  .attr('is_completed', false);
+
 export {
   TaskFactory,
-}
+  BlankTaskFactory,
+};

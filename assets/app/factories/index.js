@@ -1,7 +1,8 @@
 import { UserFactory } from './user';
-import { TaskFactory } from './tasks';
+import { TaskFactory, BlankTaskFactory } from './tasks';
 
 export {
   UserFactory,
   TaskFactory,
+  BlankTaskFactory,
 };
