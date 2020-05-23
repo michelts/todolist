@@ -2,5 +2,6 @@ pytest
 pytest-flask
 pytest-runner
 setuptools_black
+black==19.3b0
 flake8
 isort
