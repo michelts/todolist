@@ -60,4 +60,30 @@ describe('Tasks component', () => {
     const newTasks = callback(OrderedMap()); // simulate callback over a clean state
     expect(newTasks).toEqual(OrderedMap([[updatedTask.id, updatedTask]]));
   });
+
+  it('should post priority when changed', async () => {
+    const task = BlankTaskFactory.build();
+    const updatedTask = { ...task, priority: 3 };
+    axios.put.mockResolvedValue({ data: updatedTask });
+
+    // react-bootstrap selects don't get a value, we need to get it from the select elem
+    jest.spyOn(React, 'useRef').mockReturnValue({ current: { value: updatedTask.priority } });
+
+    const { wrapper, props: { setTasks } } = getWrapper({ task });
+
+    wrapper.find('[name="priority"]').simulate('change');
+    const { id, ...payload } = updatedTask;
+    expect(axios.put).toHaveBeenCalledWith(`/api/v1/tasks/${id}/`, payload);
+
+    await axios.put;
+    const callback = setTasks.mock.calls[0][0];
+    const newTasks = callback(OrderedMap()); // simulate callback over a clean state
+    expect(newTasks).toEqual(OrderedMap([[updatedTask.id, updatedTask]]));
+  });
+
+  it('should render the proper priority option selected', async () => {
+    const task = TaskFactory.build({ priority: 3 });
+    const { wrapper } = getWrapper({ task });
+    expect(wrapper.find('[name="priority"]')).toMatchSnapshot('option 3 selected');
+  });
 });

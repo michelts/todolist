@@ -1,5 +1,51 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Tasks component should render the proper priority option selected: option 3 selected 1`] = `
+<FormControl
+  as="select"
+  custom={true}
+  name="priority"
+  onChange={[Function]}
+  size="sm"
+>
+  <option
+    key="0"
+    selected={false}
+    value={0}
+  >
+    0
+  </option>
+  <option
+    key="1"
+    selected={false}
+    value={1}
+  >
+    1
+  </option>
+  <option
+    key="2"
+    selected={false}
+    value={2}
+  >
+    2
+  </option>
+  <option
+    key="3"
+    selected={true}
+    value={3}
+  >
+    3
+  </option>
+  <option
+    key="4"
+    selected={false}
+    value={4}
+  >
+    4
+  </option>
+</FormControl>
+`;
+
 exports[`Tasks component should render the task description, a button to select it, the date, and a priority field 1`] = `
 <ListGroupItem
   active={false}
@@ -45,22 +91,44 @@ exports[`Tasks component should render the task description, a button to select 
       <FormControl
         as="select"
         custom={true}
+        name="priority"
+        onChange={[Function]}
         size="sm"
       >
-        <option>
+        <option
+          key="0"
+          selected={true}
+          value={0}
+        >
+          0
+        </option>
+        <option
+          key="1"
+          selected={false}
+          value={1}
+        >
           1
         </option>
-        <option>
+        <option
+          key="2"
+          selected={false}
+          value={2}
+        >
           2
         </option>
-        <option>
+        <option
+          key="3"
+          selected={false}
+          value={3}
+        >
           3
         </option>
-        <option>
+        <option
+          key="4"
+          selected={false}
+          value={4}
+        >
           4
-        </option>
-        <option>
-          5
         </option>
       </FormControl>
     </div>
@@ -113,22 +181,44 @@ exports[`Tasks component should render the task description, a button to select 
       <FormControl
         as="select"
         custom={true}
+        name="priority"
+        onChange={[Function]}
         size="sm"
       >
-        <option>
+        <option
+          key="0"
+          selected={true}
+          value={0}
+        >
+          0
+        </option>
+        <option
+          key="1"
+          selected={false}
+          value={1}
+        >
           1
         </option>
-        <option>
+        <option
+          key="2"
+          selected={false}
+          value={2}
+        >
           2
         </option>
-        <option>
+        <option
+          key="3"
+          selected={false}
+          value={3}
+        >
           3
         </option>
-        <option>
+        <option
+          key="4"
+          selected={false}
+          value={4}
+        >
           4
-        </option>
-        <option>
-          5
         </option>
       </FormControl>
     </div>
