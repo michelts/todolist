@@ -12,7 +12,7 @@ import PasswordInput from 'common/components/PasswordInput';
 
 export const RegisterSchema = Yup.object().shape({
   username: Yup.string().required(),
-  username: Yup.string().required(),
+  name: Yup.string().required(),
   password: Yup.string().required(),
 });
 
