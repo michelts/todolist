@@ -109,4 +109,19 @@ describe('Tasks component', () => {
     const { wrapper } = getWrapper({ task });
     expect(wrapper.find('[name="is-completed"]').prop('checked')).toBe(true);
   });
+
+  it('should delete the task when clicked to archive it', async () => {
+    axios.delete.mockResolvedValue({});
+
+    const tasks = OrderedMap(BlankTaskFactory.buildList(1).map((obj) => [obj.id, obj]));
+    const { wrapper, props: { task, setTasks } } = getWrapper({ task: tasks.first() });
+
+    wrapper.find('[name="archive"]').simulate('click');
+    expect(axios.delete).toHaveBeenCalledWith(`/api/v1/tasks/${task.id}/`);
+
+    await axios.delete;
+    const callback = setTasks.mock.calls[0][0];
+    const newTasks = callback(tasks); // simulate callback over existing state
+    expect(newTasks).toEqual(OrderedMap());
+  });
 });

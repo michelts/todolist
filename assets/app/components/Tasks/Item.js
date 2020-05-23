@@ -45,6 +45,12 @@ const TaskItem = ({
     });
   };
 
+  const handleArchive = () => {
+    axios.delete(`/api/v1/tasks/${id}/`).then(() => {
+      setTasks((state) => state.delete(id));
+    });
+  };
+
   return (
     <ListGroup.Item>
       <div className="d-flex justify-content-between align-items-center">
@@ -93,7 +99,14 @@ const TaskItem = ({
           </Form.Control>
         </div>
         <div className="w-10 ml-4">
-          <Button variant="danger" className="btn-sm">Archive</Button>
+          <Button
+            name="archive"
+            variant="danger"
+            className="btn-sm"
+            onClick={handleArchive}
+          >
+            Archive
+          </Button>
         </div>
       </div>
     </ListGroup.Item>

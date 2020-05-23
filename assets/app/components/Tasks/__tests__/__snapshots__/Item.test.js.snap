@@ -150,6 +150,8 @@ exports[`Tasks component should render the task description, a button to select 
         active={false}
         className="btn-sm"
         disabled={false}
+        name="archive"
+        onClick={[Function]}
         type="button"
         variant="danger"
       >
@@ -264,6 +266,8 @@ exports[`Tasks component should render the task description, a button to select 
         active={false}
         className="btn-sm"
         disabled={false}
+        name="archive"
+        onClick={[Function]}
         type="button"
         variant="danger"
       >
