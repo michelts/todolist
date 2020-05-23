@@ -1,0 +1,13 @@
+version: '3'
+services:
+  db:
+    image: postgres:alpine
+  app:
+    container_name: app
+    build: .
+    image: app
+    entrypoint: /bin/sh /srv/docker-entrypoint.sh
+    ports:
+      - 5000:5000
+    depends_on:
+      - db
