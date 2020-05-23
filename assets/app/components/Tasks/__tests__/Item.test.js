@@ -35,7 +35,7 @@ describe('Tasks component', () => {
     const { wrapper, props: { setTasks } } = getWrapper({ task });
 
     wrapper.find('[data-name="description"]').simulate('save', updatedTask.description);
-    const { id, ...payload } = updatedTask;
+    const { id, selected, ...payload } = updatedTask;
     expect(axios.put).toHaveBeenCalledWith(`/api/v1/tasks/${id}/`, payload);
 
     await axios.put;
@@ -52,7 +52,7 @@ describe('Tasks component', () => {
     const { wrapper, props: { setTasks } } = getWrapper({ task });
 
     wrapper.find('[data-name="due-date"]').simulate('save', updatedTask.due_date);
-    const { id, ...payload } = updatedTask;
+    const { id, selected, ...payload } = updatedTask;
     expect(axios.put).toHaveBeenCalledWith(`/api/v1/tasks/${id}/`, payload);
 
     await axios.put;
@@ -72,7 +72,7 @@ describe('Tasks component', () => {
     const { wrapper, props: { setTasks } } = getWrapper({ task });
 
     wrapper.find('[name="priority"]').simulate('change');
-    const { id, ...payload } = updatedTask;
+    const { id, selected, ...payload } = updatedTask;
     expect(axios.put).toHaveBeenCalledWith(`/api/v1/tasks/${id}/`, payload);
 
     await axios.put;

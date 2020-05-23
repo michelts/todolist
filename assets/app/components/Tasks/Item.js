@@ -5,7 +5,11 @@ import Form from 'react-bootstrap/Form';
 import EditText from 'common/components/EditText';
 
 const TaskItem = ({
-  task: { id, ...task },
+  task: {
+    id,
+    selected,
+    ...task
+  },
   setTasks,
 }) => {
   const priorityRef = React.useRef();
@@ -45,7 +49,7 @@ const TaskItem = ({
           <Form.Check
             name="select"
             type="checkbox"
-            checked={task.selected || false}
+            checked={selected || false}
             onClick={handleSelectClick}
           />
         </div>
