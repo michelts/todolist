@@ -14,6 +14,13 @@ def task_list():
         models.Task.user_id == current_user.id,
         models.Task.is_removed == False,  # noqa: E712
     )
+
+    sort_field = request.args.get('sort', 'due_date')
+    if sort_field == 'priority':
+        query = query.order_by(models.Task.priority.desc())
+    else:
+        query = query.order_by(models.Task.due_date)
+
     return jsonify([obj.serialize() for obj in query])
 
 
