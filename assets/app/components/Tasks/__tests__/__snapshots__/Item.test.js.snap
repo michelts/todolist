@@ -53,25 +53,28 @@ exports[`Tasks component should render the task description, a button to select 
   variant={null}
 >
   <div
-    className="d-flex justify-content-between"
+    className="d-flex justify-content-between align-items-center"
   >
     <div
-      className="w-10"
+      className="w-10 text-center"
     >
+      <div>
+        Done?
+      </div>
       <FormCheck
         checked={false}
         disabled={false}
         inline={false}
         isInvalid={false}
         isValid={false}
-        name="select"
+        name="is-completed"
         onClick={[Function]}
         title=""
         type="checkbox"
       />
     </div>
     <div
-      className="flex-grow-1 ml-3"
+      className="flex-grow-1 ml-4"
     >
       <EditText
         data-name="description"
@@ -89,8 +92,13 @@ exports[`Tasks component should render the task description, a button to select 
       </span>
     </div>
     <div
-      className="w-10 ml-3"
+      className="w-10 ml-4 text-center"
     >
+      <div
+        className="mb-1"
+      >
+        Priority
+      </div>
       <FormControl
         as="select"
         custom={true}
@@ -135,6 +143,19 @@ exports[`Tasks component should render the task description, a button to select 
         </option>
       </FormControl>
     </div>
+    <div
+      className="w-10 ml-4"
+    >
+      <Button
+        active={false}
+        className="btn-sm"
+        disabled={false}
+        type="button"
+        variant="danger"
+      >
+        Archive
+      </Button>
+    </div>
   </div>
 </ListGroupItem>
 `;
@@ -146,25 +167,28 @@ exports[`Tasks component should render the task description, a button to select 
   variant={null}
 >
   <div
-    className="d-flex justify-content-between"
+    className="d-flex justify-content-between align-items-center"
   >
     <div
-      className="w-10"
+      className="w-10 text-center"
     >
+      <div>
+        Done?
+      </div>
       <FormCheck
         checked={false}
         disabled={false}
         inline={false}
         isInvalid={false}
         isValid={false}
-        name="select"
+        name="is-completed"
         onClick={[Function]}
         title=""
         type="checkbox"
       />
     </div>
     <div
-      className="flex-grow-1 ml-3"
+      className="flex-grow-1 ml-4"
     >
       <EditText
         data-name="description"
@@ -182,8 +206,13 @@ exports[`Tasks component should render the task description, a button to select 
       </span>
     </div>
     <div
-      className="w-10 ml-3"
+      className="w-10 ml-4 text-center"
     >
+      <div
+        className="mb-1"
+      >
+        Priority
+      </div>
       <FormControl
         as="select"
         custom={true}
@@ -227,6 +256,19 @@ exports[`Tasks component should render the task description, a button to select 
           4
         </option>
       </FormControl>
+    </div>
+    <div
+      className="w-10 ml-4"
+    >
+      <Button
+        active={false}
+        className="btn-sm"
+        disabled={false}
+        type="button"
+        variant="danger"
+      >
+        Archive
+      </Button>
     </div>
   </div>
 </ListGroupItem>

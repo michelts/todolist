@@ -2,12 +2,12 @@ import React from 'react';
 import axios from 'axios';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 import EditText from 'common/components/EditText';
 
 const TaskItem = ({
   task: {
     id,
-    selected,
     ...task
   },
   setTasks,
@@ -38,22 +38,26 @@ const TaskItem = ({
     });
   };
 
-  const handleSelectClick = () => {
-    setTasks((state) => state.update(id, (obj) => ({ ...obj, selected: !obj.selected })));
+  const handleCompleted = () => {
+    const payload = { ...task, is_completed: !task.is_completed };
+    axios.put(`/api/v1/tasks/${id}/`, payload).then(({ data }) => {
+      setTasks((state) => state.set(id, data));
+    });
   };
 
   return (
     <ListGroup.Item>
-      <div className="d-flex justify-content-between">
-        <div className="w-10">
+      <div className="d-flex justify-content-between align-items-center">
+        <div className="w-10 text-center">
+          <div>Done?</div>
           <Form.Check
-            name="select"
+            name="is-completed"
             type="checkbox"
-            checked={selected || false}
-            onClick={handleSelectClick}
+            checked={task.is_completed}
+            onClick={handleCompleted}
           />
         </div>
-        <div className="flex-grow-1 ml-3">
+        <div className="flex-grow-1 ml-4">
           <EditText
             data-name="description"
             value={task.description || 'Fill with the task description'}
@@ -67,7 +71,8 @@ const TaskItem = ({
             />
           </span>
         </div>
-        <div className="w-10 ml-3">
+        <div className="w-10 ml-4 text-center">
+          <div className="mb-1">Priority</div>
           <Form.Control
             as="select"
             name="priority"
@@ -86,6 +91,9 @@ const TaskItem = ({
               </option>
             ))}
           </Form.Control>
+        </div>
+        <div className="w-10 ml-4">
+          <Button variant="danger" className="btn-sm">Archive</Button>
         </div>
       </div>
     </ListGroup.Item>
