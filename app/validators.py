@@ -1,6 +1,4 @@
-from marshmallow import Schema, fields, validates_schema, ValidationError, pre_load
-
-from . import models
+from marshmallow import Schema, fields
 
 
 class UserLoginSchema(Schema):

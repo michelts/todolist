@@ -43,7 +43,7 @@ def user_login():
 @blueprint.route("/logout/", methods=["GET"])
 def user_logout():
     logout_user()
-    return '', 204
+    return "", 204
 
 
 @blueprint.route("/", methods=["POST"])

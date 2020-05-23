@@ -33,7 +33,7 @@ backend_tests:
     - pip3 install -r test_requirements.txt
 
   script:
-    - python setup.py flake8
-    - python setup.py isort
-    - python setup.py format
     - python setup.py test
+    - python setup.py format
+    - python setup.py isort
+    - python setup.py flake8

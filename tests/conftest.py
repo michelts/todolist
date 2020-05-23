@@ -60,7 +60,7 @@ def session(request, db):
 
 @pytest.fixture
 def generic_password():
-    return '123456'
+    return "123456"
 
 
 @pytest.fixture

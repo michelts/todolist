@@ -142,7 +142,9 @@ def test_task_creation_fails_when_is_completed_flag_is_not_boolean(
 
 
 @pytest.mark.parametrize("source", ["web", "api"])
-def test_task_creation_fails_when_is_completed_flag_is_null(user, payload, get_response):
+def test_task_creation_fails_when_is_completed_flag_is_null(
+    user, payload, get_response
+):
     payload["is_completed"] = None
     response = get_response(payload)
     assert response.status_code == 400
