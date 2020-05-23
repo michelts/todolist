@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
+import ListGroup from 'react-bootstrap/ListGroup';
 import Sorter from './Sorter';
-import List from './List';
 import Item from './Item';
 
 const Tasks = () => (
@@ -14,12 +14,12 @@ const Tasks = () => (
         <Sorter />
       </div>
     </div>
-    <List>
+    <ListGroup className="mb-3">
       <Item item={{ description: 'Cras justo odio', due_date: null }} />
       <Item item={{ description: 'Lorem Ipsum dolor sit amet', due_date: '2019-12-29' }} />
       <Item item={{ description: 'Cras justo odio', due_date: null }} />
       <Item item={{ description: 'Lorem Ipsum dolor sit amet', due_date: '2019-12-29' }} />
-    </List>
+    </ListGroup>
     <Button>Add new</Button>
   </>
 );
