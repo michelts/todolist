@@ -35,7 +35,7 @@ exports[`Register component should indicate creation failed if form submission i
   />
   <Field
     component={[Function]}
-    label="Username"
+    label="Your name"
     name="name"
   />
   <Field
@@ -86,7 +86,7 @@ exports[`Register component should render a registration form: Formik children 1
   />
   <Field
     component={[Function]}
-    label="Username"
+    label="Your name"
     name="name"
   />
   <Field

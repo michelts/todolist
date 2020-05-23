@@ -52,7 +52,7 @@ const Register = () => {
           <Form onSubmit={formikSubmit}>
             <Field component={Input} name="username" label="Username" />
 
-            <Field component={Input} name="name" label="Username" />
+            <Field component={Input} name="name" label="Your name" />
 
             <Field component={PasswordInput} name="password" label="Password" />
 
