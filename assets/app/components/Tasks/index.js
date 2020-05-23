@@ -27,6 +27,7 @@ const Tasks = () => {
 
         <div className="ml-3">
           <Sorter
+            setTasks={setTasks}
             disabled={tasks === undefined}
           />
         </div>

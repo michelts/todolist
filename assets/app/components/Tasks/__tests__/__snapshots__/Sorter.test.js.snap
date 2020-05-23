@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tasks component should render a select to sort options 1`] = `
+<FormControl
+  as="select"
+  custom={true}
+  disabled={false}
+  onChange={[Function]}
+  size="sm"
+>
+  <option
+    value="due_date"
+  >
+    Sort by date
+  </option>
+  <option
+    value="priority"
+  >
+    Sort by priority
+  </option>
+</FormControl>
+`;
