@@ -23,10 +23,14 @@
         "react",
         "jest"
     ],
+    "settings": {
+        "import/resolver": "webpack"
+    },
     "rules": {
         "react/jsx-filename-extension": 0,
         "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/factories/**", "**/__tests__/**", "**/__mocks__/**", "webpack.config.js"]}],
         "react/prop-types": 0,
-        "react/jsx-props-no-spreading": 0
+        "react/jsx-props-no-spreading": 0,
+        "import/prefer-default-export": 0
     }
 }
