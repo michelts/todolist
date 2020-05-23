@@ -59,10 +59,13 @@ exports[`Tasks component should render the task description, a button to select 
       className="w-10"
     >
       <FormCheck
+        checked={false}
         disabled={false}
         inline={false}
         isInvalid={false}
         isValid={false}
+        name="select"
+        onClick={[Function]}
         title=""
         type="checkbox"
       />
@@ -149,10 +152,13 @@ exports[`Tasks component should render the task description, a button to select 
       className="w-10"
     >
       <FormCheck
+        checked={false}
         disabled={false}
         inline={false}
         isInvalid={false}
         isValid={false}
+        name="select"
+        onClick={[Function]}
         title=""
         type="checkbox"
       />

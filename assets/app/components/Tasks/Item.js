@@ -34,11 +34,20 @@ const TaskItem = ({
     });
   }
 
+  const handleSelectClick = () => {
+    setTasks(state => state.update(id, obj =>({ ...obj, selected: !obj.selected })));
+  };
+
   return (
     <ListGroup.Item>
       <div className="d-flex justify-content-between">
         <div className="w-10">
-          <Form.Check type="checkbox" />
+          <Form.Check
+            name="select"
+            type="checkbox"
+            checked={task.selected || false}
+            onClick={handleSelectClick}
+          />
         </div>
         <div className="flex-grow-1 ml-3">
           <EditText

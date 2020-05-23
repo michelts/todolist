@@ -86,4 +86,20 @@ describe('Tasks component', () => {
     const { wrapper } = getWrapper({ task });
     expect(wrapper.find('[name="priority"]')).toMatchSnapshot('option 3 selected');
   });
+
+  it('should toggle the item selection when click the checkbox', () => {
+    const tasks = OrderedMap(BlankTaskFactory.buildList(1).map(obj => [obj.id, obj]));
+    const { wrapper, props: { setTasks } } = getWrapper({ task: tasks.first() });
+
+    wrapper.find('[name="select"]').simulate('click');
+    const callback = setTasks.mock.calls[0][0];
+    const newTasks = callback(tasks); // simulate callback over the current state
+    expect(newTasks.first().selected).toEqual(true);
+  });
+
+  it('should render the checkbox selected if item is selected', () => {
+    const task = BlankTaskFactory.build({ selected: true });
+    const { wrapper } = getWrapper({ task });
+    expect(wrapper.find('[name="select"]').prop('checked')).toBe(true);
+  });
 });
