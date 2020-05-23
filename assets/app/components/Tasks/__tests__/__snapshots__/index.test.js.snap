@@ -28,6 +28,7 @@ exports[`Tasks component should render a title, create and sort controls, and an
   <Button
     active={false}
     disabled={false}
+    onClick={[Function]}
     type="button"
     variant="primary"
   >
@@ -75,6 +76,7 @@ exports[`Tasks component should render a title, create and sort controls, and th
   <Button
     active={false}
     disabled={false}
+    onClick={[Function]}
     type="button"
     variant="primary"
   >
@@ -111,6 +113,7 @@ exports[`Tasks component should render a title, disabled create and sort control
   <Button
     active={false}
     disabled={true}
+    onClick={[Function]}
     type="button"
     variant="primary"
   >
