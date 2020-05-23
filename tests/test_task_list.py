@@ -7,16 +7,16 @@ from app import models
 def get_response(source, client, user):
     if source == "web":
 
-        def wrapper():
+        def wrapper(extra_params=""):
             with client.session_transaction() as session:
                 session["_user_id"] = user.id
                 session["_fresh"] = True
-            return client.get("/api/v1/tasks/")
+            return client.get(f"/api/v1/tasks/?{extra_params}")
 
     elif source == "api":
 
-        def wrapper():
-            return client.get(f"/api/v1/tasks/?api_key={user.username}")
+        def wrapper(extra_params=""):
+            return client.get(f"/api/v1/tasks/?{extra_params}&api_key={user.username}")
 
     else:
         raise ValueError(f"Unknown source {source}")
@@ -114,6 +114,6 @@ def test_task_list_returns_task_objects_sorted_by_priority(session, user, get_re
     session.add(task2)
     session.commit()
 
-    response = get_response()
+    response = get_response("sort=priority")
     assert response.status_code == 200
     assert response.json == [task1.serialize(), task2.serialize()]
