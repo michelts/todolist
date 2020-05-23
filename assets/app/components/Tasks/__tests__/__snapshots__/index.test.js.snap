@@ -1,0 +1,120 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tasks component should render a title, create and sort controls, and an empty list when tasks are empty 1`] = `
+<Fragment>
+  <div
+    className="d-flex justify-content-start align-items-center"
+  >
+    <div>
+      <h1>
+        Tasks
+      </h1>
+    </div>
+    <div
+      className="ml-3"
+    >
+      <Sorter
+        disabled={false}
+      />
+    </div>
+  </div>
+  <ListGroup
+    className="mb-3"
+    horizontal={null}
+    variant={null}
+  >
+    <BlankItem />
+  </ListGroup>
+  <Button
+    active={false}
+    disabled={false}
+    type="button"
+    variant="primary"
+  >
+    Add new task
+  </Button>
+</Fragment>
+`;
+
+exports[`Tasks component should render a title, create and sort controls, and the list of tasks when available 1`] = `
+<Fragment>
+  <div
+    className="d-flex justify-content-start align-items-center"
+  >
+    <div>
+      <h1>
+        Tasks
+      </h1>
+    </div>
+    <div
+      className="ml-3"
+    >
+      <Sorter
+        disabled={false}
+      />
+    </div>
+  </div>
+  <ListGroup
+    className="mb-3"
+    horizontal={null}
+    variant={null}
+  >
+    <TaskItem
+      item={
+        Object {
+          "description": "Task 1",
+          "due_date": "2020-05-22",
+          "id": 2,
+          "is_completed": false,
+          "priority": 1,
+        }
+      }
+      key="2"
+    />
+  </ListGroup>
+  <Button
+    active={false}
+    disabled={false}
+    type="button"
+    variant="primary"
+  >
+    Add new task
+  </Button>
+</Fragment>
+`;
+
+exports[`Tasks component should render a title, disabled create and sort controls, and the list as loading while list is undefined 1`] = `
+<Fragment>
+  <div
+    className="d-flex justify-content-start align-items-center"
+  >
+    <div>
+      <h1>
+        Tasks
+      </h1>
+    </div>
+    <div
+      className="ml-3"
+    >
+      <Sorter
+        disabled={true}
+      />
+    </div>
+  </div>
+  <ListGroup
+    className="mb-3"
+    horizontal={null}
+    variant={null}
+  >
+    <Loading />
+  </ListGroup>
+  <Button
+    active={false}
+    disabled={true}
+    type="button"
+    variant="primary"
+  >
+    Add new task
+  </Button>
+</Fragment>
+`;
