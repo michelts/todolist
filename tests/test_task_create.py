@@ -6,6 +6,26 @@ from app import models
 
 
 @pytest.fixture
+def get_response(source, client, user):
+    if source == "web":
+
+        def wrapper(payload):
+            with client.session_transaction() as session:
+                session["_user_id"] = user.id
+                session["_fresh"] = True
+            return client.post("/api/v1/tasks/", json=payload)
+
+    elif source == "api":
+
+        def wrapper(payload):
+            return client.post(f"/api/v1/tasks/?api_key={user.username}", json=payload)
+
+    else:
+        raise ValueError(f"Unknown source {source}")
+    return wrapper
+
+
+@pytest.fixture
 def payload():
     return {"description": "Say hello!"}
 
@@ -15,10 +35,11 @@ def test_task_create_returns_403_for_unauthenticated_user(client, payload):
     assert response.status_code == 401
 
 
+@pytest.mark.parametrize("source", ["web", "api"])
 def test_task_create_saves_and_returns_it_for_authenticated_user(
-    user_client, user, payload
+    user, payload, source, get_response
 ):
-    response = user_client.post("/api/v1/tasks/", json=payload)
+    response = get_response(payload)
     assert response.status_code == 201
 
     obj = models.Task.query.one()
@@ -37,13 +58,14 @@ def test_task_create_saves_and_returns_it_for_authenticated_user(
     }
 
 
+@pytest.mark.parametrize("source", ["web", "api"])
 def test_task_create_saves_priority_due_date_and_is_completed_flag_when_available(
-    user_client, user, payload
+    user, payload, get_response
 ):
     payload["priority"] = 4
     payload["due_date"] = date(2020, 5, 22).isoformat()
     payload["is_completed"] = True
-    response = user_client.post("/api/v1/tasks/", json=payload)
+    response = get_response(payload)
     assert response.status_code == 201
 
     obj = models.Task.query.one()
@@ -60,61 +82,68 @@ def test_task_create_saves_priority_due_date_and_is_completed_flag_when_availabl
     }
 
 
-def test_task_update_saves_null_due_date(user_client, user, payload):
+@pytest.mark.parametrize("source", ["web", "api"])
+def test_task_update_saves_null_due_date(user, payload, get_response):
     payload["due_date"] = None
-    response = user_client.post("/api/v1/tasks/", json=payload)
+    response = get_response(payload)
     assert response.status_code == 201
 
     obj = models.Task.query.one()
     assert obj.due_date is None
 
 
-def test_task_creation_fails_when_description_is_missing(user_client, user, payload):
+@pytest.mark.parametrize("source", ["web", "api"])
+def test_task_creation_fails_when_description_is_missing(user, payload, get_response):
     del payload["description"]
-    response = user_client.post("/api/v1/tasks/", json=payload)
+    response = get_response(payload)
     assert response.status_code == 400
     assert response.json == {"description": ["Missing data for required field."]}
 
 
+@pytest.mark.parametrize("source", ["web", "api"])
 @pytest.mark.parametrize("invalid_value", ["some-invalid-value", ""])
 def test_task_creation_fails_when_due_date_is_invalid(
-    user_client, user, payload, invalid_value
+    user, payload, invalid_value, get_response
 ):
     payload["due_date"] = invalid_value
-    response = user_client.post("/api/v1/tasks/", json=payload)
+    response = get_response(payload)
     assert response.status_code == 400
     assert response.json == {"due_date": ["Not a valid date."]}
 
 
+@pytest.mark.parametrize("source", ["web", "api"])
 @pytest.mark.parametrize("invalid_value", ["some-invalid-value", ""])
 def test_task_creation_fails_when_priority_is_not_integer(
-    user_client, user, payload, invalid_value
+    user, payload, invalid_value, get_response
 ):
     payload["priority"] = invalid_value
-    response = user_client.post("/api/v1/tasks/", json=payload)
+    response = get_response(payload)
     assert response.status_code == 400
     assert response.json == {"priority": ["Not a valid integer."]}
 
 
-def test_task_creation_fails_when_priority_is_null(user_client, user, payload):
+@pytest.mark.parametrize("source", ["web", "api"])
+def test_task_creation_fails_when_priority_is_null(user, payload, get_response):
     payload["priority"] = None
-    response = user_client.post("/api/v1/tasks/", json=payload)
+    response = get_response(payload)
     assert response.status_code == 400
     assert response.json == {"priority": ["Field may not be null."]}
 
 
+@pytest.mark.parametrize("source", ["web", "api"])
 @pytest.mark.parametrize("invalid_value", ["some-invalid-value", ""])
 def test_task_creation_fails_when_is_completed_flag_is_not_boolean(
-    user_client, user, payload, invalid_value
+    user, payload, invalid_value, get_response
 ):
     payload["is_completed"] = invalid_value
-    response = user_client.post("/api/v1/tasks/", json=payload)
+    response = get_response(payload)
     assert response.status_code == 400
     assert response.json == {"is_completed": ["Not a valid boolean."]}
 
 
-def test_task_creation_fails_when_is_completed_flag_is_null(user_client, user, payload):
+@pytest.mark.parametrize("source", ["web", "api"])
+def test_task_creation_fails_when_is_completed_flag_is_null(user, payload, get_response):
     payload["is_completed"] = None
-    response = user_client.post("/api/v1/tasks/", json=payload)
+    response = get_response(payload)
     assert response.status_code == 400
     assert response.json == {"is_completed": ["Field may not be null."]}
