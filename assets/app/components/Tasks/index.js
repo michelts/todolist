@@ -45,7 +45,7 @@ const Tasks = () => {
       </ListGroup>
 
       <Create
-        tasks={tasks}
+        disabled={tasks === undefined}
         setTasks={setTasks}
       >
         Add new task

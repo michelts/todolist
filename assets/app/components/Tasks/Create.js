@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 
-const CreateButton = ({ tasks, setTasks }) => {
+const CreateButton = ({ setTasks, disabled }) => {
   const [creating, setCreating] = React.useState(false);
 
   const handleClick = () => {
@@ -15,7 +15,7 @@ const CreateButton = ({ tasks, setTasks }) => {
 
   return (
     <Button
-      disabled={tasks === undefined || creating}
+      disabled={disabled || creating}
       onClick={handleClick}
     >
       Add new task

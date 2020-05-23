@@ -7,7 +7,7 @@ import Create from '../Create';
 
 const getWrapper = (customProps = {}) => {
   const props = {
-    tasks: undefined,
+    disabled: false,
     setTasks: jest.fn(),
     ...customProps,
   };
@@ -19,13 +19,13 @@ describe('Create component', () => {
   beforeEach(() => {
   });
 
-  it('should render a disabled button if tasks are undefined', () => {
-    const { wrapper } = getWrapper({ tasks: undefined });
+  it('should render a disabled button if disabled flag is provided', () => {
+    const { wrapper } = getWrapper({ disabled: true });
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should render a button to add new task if tasks were loaded', () => {
-    const { wrapper } = getWrapper({ tasks: OrderedMap() });
+  it('should render a button to add new task if disabled is not true', () => {
+    const { wrapper } = getWrapper({ disabled: false });
     expect(wrapper).toMatchSnapshot();
   });
 

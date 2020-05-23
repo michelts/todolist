@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Create component should render a button to add new task if tasks were loaded 1`] = `
+exports[`Create component should render a button to add new task if disabled is not true 1`] = `
 <Button
   active={false}
   disabled={false}
@@ -12,7 +12,7 @@ exports[`Create component should render a button to add new task if tasks were l
 </Button>
 `;
 
-exports[`Create component should render a disabled button if tasks are undefined 1`] = `
+exports[`Create component should render a disabled button if disabled flag is provided 1`] = `
 <Button
   active={false}
   disabled={true}
