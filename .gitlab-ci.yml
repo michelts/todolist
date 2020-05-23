@@ -1,0 +1,35 @@
+image: python:alpine
+
+frontend_tests:
+  image: node:alpine
+
+  cache:
+    untracked: true
+    key: "$CI_COMMIT_REF_NAME"
+    paths:
+      - assets/node_modules/
+
+  script:
+    - cd assets/
+    - npm install
+    - npm run linter
+    - npm run tests
+
+backend_tests:
+  image: python:alpine
+
+  variables:
+    PIP_CACHE_DIR: "$CI_PROJECT_DIR/pip-cache"
+
+  cache:
+    untracked: true
+    key: "$CI_COMMIT_REF_NAME"
+    paths:
+      - "$PIP_CACHE_DIR"
+
+  before_script:
+    - pip3 install --upgrade pip
+    - pip3 install -r requirements.txt
+
+  script:
+    - pytest -v
