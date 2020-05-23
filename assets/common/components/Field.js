@@ -8,11 +8,6 @@ const Field = ({
     onChange: handleChange,
     onBlur: handleBlur,
   },
-  form: {
-    touched,
-    errors,
-    isSubmitting,
-  },
   control: ControlComponent,
   label,
   id = '',
