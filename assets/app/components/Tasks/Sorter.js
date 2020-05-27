@@ -7,7 +7,7 @@ const Sorter = ({ setTasks, disabled }) => {
   const inputRef = React.useRef();
   const [timeoutId, setTimeoutId] = React.useState(null);
 
-  const handleChange = () => {
+  const handleChange = React.useCallback(() => {
     const { current: { value } } = inputRef;
 
     if (timeoutId !== null) {
@@ -24,7 +24,7 @@ const Sorter = ({ setTasks, disabled }) => {
         });
       }, 1000),
     );
-  };
+  }, [inputRef, setTasks]);
 
   return (
     <Form.Control

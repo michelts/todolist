@@ -5,13 +5,13 @@ import Button from 'react-bootstrap/Button';
 const CreateButton = ({ setTasks, disabled }) => {
   const [creating, setCreating] = React.useState(false);
 
-  const handleClick = () => {
+  const handleClick = React.useCallback(() => {
     setCreating(true);
     axios.post('/api/v1/tasks/', { description: '' }).then(({ data }) => {
       setTasks((state) => state.set(data.id, data));
       setCreating(false);
     });
-  };
+  }, []);
 
   return (
     <Button

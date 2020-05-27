@@ -27,14 +27,14 @@ const Register = () => {
     password: '',
   };
 
-  const handleSubmit = (values) => {
+  const handleSubmit = React.useCallback((values) => {
     axios.post('/api/v1/users/', values)
       .then(({ data }) => {
         setUser(data);
         history.push('/tasks');
       })
       .catch(() => setSaveFailed(true));
-  };
+  }, []);
 
   return (
     <>

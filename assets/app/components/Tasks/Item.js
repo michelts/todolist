@@ -14,42 +14,42 @@ const TaskItem = ({
 }) => {
   const priorityRef = React.useRef();
 
-  const handleSaveDescription = (value) => {
+  const handleSaveDescription = React.useCallback((value) => {
     const payload = { ...task, description: value };
     axios.put(`/api/v1/tasks/${id}/`, payload).then(({ data }) => {
       setTasks((state) => state.set(id, data));
     });
-  };
+  }, [id, setTasks]);
 
-  const handleSaveDueDate = (value) => {
+  const handleSaveDueDate = React.useCallback((value) => {
     const payload = { ...task, due_date: value };
     axios.put(`/api/v1/tasks/${id}/`, payload).then(({ data }) => {
       setTasks((state) => state.set(id, data));
     });
-  };
+  }, [id, setTasks]);
 
   const priorities = [0, 1, 2, 3, 4];
 
-  const handlePriorityChange = () => {
+  const handlePriorityChange = React.useCallback(() => {
     const { current: { value } } = priorityRef;
     const payload = { ...task, priority: parseInt(value, 10) };
     axios.put(`/api/v1/tasks/${id}/`, payload).then(({ data }) => {
       setTasks((state) => state.set(id, data));
     });
-  };
+  }, [id, setTasks]);
 
-  const handleCompleted = () => {
+  const handleCompleted = React.useCallback(() => {
     const payload = { ...task, is_completed: !task.is_completed };
     axios.put(`/api/v1/tasks/${id}/`, payload).then(({ data }) => {
       setTasks((state) => state.set(id, data));
     });
-  };
+  }, [id, setTasks]);
 
-  const handleArchive = () => {
+  const handleArchive = React.useCallback(() => {
     axios.delete(`/api/v1/tasks/${id}/`).then(() => {
       setTasks((state) => state.delete(id));
     });
-  };
+  }, [id, setTasks]);
 
   return (
     <ListGroup.Item>

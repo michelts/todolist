@@ -37,14 +37,14 @@ const Login = () => {
     password: '',
   };
 
-  const handleSubmit = (values) => {
+  const handleSubmit = React.useCallback((values) => {
     axios.post('/api/v1/users/login/', values)
       .then(({ data }) => {
         setUser(data);
         history.push('/tasks');
       })
       .catch(() => setLoginFailed(true));
-  };
+  }, []);
 
   if (user === undefined) {
     return <Loading />;
