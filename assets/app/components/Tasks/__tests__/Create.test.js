@@ -16,9 +16,6 @@ const getWrapper = (customProps = {}) => {
 };
 
 describe('Create component', () => {
-  beforeEach(() => {
-  });
-
   it('should render a disabled button if disabled flag is provided', () => {
     const { wrapper } = getWrapper({ disabled: true });
     expect(wrapper).toMatchSnapshot();
